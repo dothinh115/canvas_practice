@@ -146,9 +146,9 @@ const getPositionOfImg = (img: HTMLImageElement, side: 'front' | 'side'): {
         sizeHeight = 523.161 - 138.5
     }
     img.width > sizeWidth ? width = sizeWidth : width = img.width;
-    // img.height > sizeHeight ? height = sizeHeight : height = img.height;
     const ratio = img.width / img.height;
     height = width * 1 / ratio;
+    if (side = "front") img.height > sizeHeight ? height = sizeHeight : height = img.height;
     return {
         x: (sizeWidth - width) / 2 + (side === "front" ? 129.902 : 24.9748),
         y: (sizeHeight - height) / 2 + (side === "front" ? 135.548 : 138.5),
@@ -166,7 +166,6 @@ const drawImg = async (ctx: CanvasRenderingContext2D) => {
     const sideImgPos = getPositionOfImg(props.image.sideImg, 'side');
     ctx.transform(1, 0.44, 0, 1, 0, -48);
     ctx.drawImage(props.image.sideImg, sideImgPos.x, sideImgPos.y, sideImgPos.width, sideImgPos.height);
-    // console.log(sideImgPos.width, sideImgPos.height)
 }
 
 watchEffect(() => {
