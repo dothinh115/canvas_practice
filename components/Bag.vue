@@ -221,7 +221,7 @@ const drawBag = async (ctx: CanvasRenderingContext2D) => {
             ctx.fill(o);
 
             //side chosen
-            let stroke: Path2D = new Path2D(props.side === 'front' ? "M165.375 506.593L409.334 470.5V130.5L165.375 155Z" : "M64.1252 470.631L154.9461 503.658V153.658L64.1252 121.658Z");
+            let stroke: Path2D = new Path2D(props.side === 'front' ? "M165.375 508.593L409.334 472.5V128.5L165.375 151.5Z" : "M61 470.631L156 504.658V149.5L61 115.5Z");
             ctx.strokeStyle = "#13bac1";
             ctx.lineWidth = 3;
             ctx.setLineDash([]);
@@ -398,7 +398,7 @@ const drawBag = async (ctx: CanvasRenderingContext2D) => {
             ctx.fillStyle = '#464646';
             ctx.fill(o);
             //side chosen
-            let stroke: Path2D = new Path2D(props.side === 'front' ? "M126.902 135.548V536.767L452.931 490.986V100.429L126.902 131.548Z" : "M20.9748 497.161L112.9748 529.161V136.5L20.9748 103.5V497.161");
+            let stroke: Path2D = new Path2D(props.side === 'front' ? "M126.902 135.548V536.767L452.931 490.986V100.429L126.902 131.548Z" : "M18.9748 497.161L114.9748 531.161V130.5L18.9748 97.5Z");
             ctx.strokeStyle = "#13bac1";
             ctx.lineWidth = 3;
             ctx.setLineDash([]);
