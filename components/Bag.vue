@@ -174,7 +174,7 @@ watchEffect(() => {
 
 watch(() => props.side, () => {
     ctx = canvasEl.value?.getContext("2d");
-    drawBag(ctx!);
+    if (ctx) drawBag(ctx);
 });
 
 onMounted(() => {
