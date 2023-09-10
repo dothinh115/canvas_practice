@@ -77,7 +77,7 @@ const getPositionOfImg = (img: HTMLImageElement, side: 'front' | 'side'): {
                 sizeWidth = 150.9461 - 68.1252;
                 sizeHeight = 497.658 - 157.658
                 imgStartX = 68.1252;
-                imgStartY = 157.658;
+                imgStartY = 140.658;
                 break;
             }
             case 'tiny': {
