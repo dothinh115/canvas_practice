@@ -40,10 +40,10 @@ const inputFile = ref<HTMLInputElement | null>(null);
 const loadImage = (url: string): Promise<HTMLImageElement> => {
     return new Promise((resolve, reject) => {
         let img = new Image();
-        img.onload = () => resolve(img);
-        img.onerror = (error) => reject(error);
         img.style.objectFit = "cover";
         img.src = url;
+        img.onload = () => resolve(img);
+        img.onerror = (error) => reject(error);
     });
 }
 const image = reactive<{
@@ -85,9 +85,9 @@ const fileUpload = async (event: Event) => {
 
 const handleChangeSizeBag = (size: 'large' | 'small' | 'tiny') => sizeBag.value = size
 
-onMounted(() => {
+onBeforeMount(() => {
     setDefaultImg();
-});
+})
 
 </script>
 <style lang="scss">
