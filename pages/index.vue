@@ -11,8 +11,9 @@
         <img src="/images/imgUpload.png"
             class="md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover mx-auto" @click="uploadFile" />
         <img :src="item"
-            class="rounded-[12px] md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover  mx-auto"
-            @click="changeImg" v-for="(item, index) in uploadedImg" :key="index" />
+            class="rounded-[12px] md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover mx-auto" :class="{
+                'active': side === 'front' ? image.frontImg?.src.includes(item) : image.sideImg?.src.includes(item)
+            }" @click="changeImg" v-for="(item, index) in uploadedImg" :key="index" />
     </div>
 </template>
 
@@ -87,3 +88,8 @@ onMounted(() => {
 });
 
 </script>
+<style lang="scss">
+.active {
+    border: 3px solid #13bac1,
+}
+</style>
