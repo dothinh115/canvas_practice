@@ -1,9 +1,9 @@
 <template>
-    <div class="mt-[100px] max-w-[600px] mx-auto flex justify-end">
+    <div class="mt-8 max-w-[600px] mx-auto flex justify-end">
         <Select @changeSizeBag="handleChangeSizeBag" :sizeBagArr="sizeBagArr" :sizeBag="sizeBag" />
 
     </div>
-    <div class="mt-[100px]">
+    <div class="mt-[120px]">
         <Bag :side="side" :image="image" @changeSide="changeSide" :sizeBag="sizeBag" />
     </div>
     <input type="file" class="hidden" ref="inputFile" @change="fileUpload" />
