@@ -1,6 +1,10 @@
 <template>
+    <div class="mt-[100px] max-w-[600px] mx-auto flex justify-end">
+        <Select @changeSizeBag="handleChangeSizeBag" :sizeBagArr="sizeBagArr" :sizeBag="sizeBag" />
+
+    </div>
     <div class="mt-[100px]">
-        <Bag :side="side" :image="image" @changeSide="changeSide" />
+        <Bag :side="side" :image="image" @changeSide="changeSide" :sizeBag="sizeBag" />
     </div>
     <input type="file" class="hidden" ref="inputFile" @change="fileUpload" />
     <div class="mt-[100px] max-w-[400px] lg:w-1/2 md:w-1/2 w-full mx-auto grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-1">
@@ -14,6 +18,21 @@
 
 <script setup lang="ts">
 const side = ref<'front' | 'side'>('front');
+const sizeBagArr = [
+    {
+        title: 'Large(17x15x7 inches)',
+        value: 'large'
+    },
+    {
+        title: 'Small(15x12x7 inches)',
+        value: 'small'
+    },
+    {
+        title: 'Tiny(11x9x7 inches)',
+        value: 'tiny'
+    },
+];
+const sizeBag = ref<'large' | 'small' | 'tiny'>('small');
 const inputFile = ref<HTMLInputElement | null>(null);
 const loadImage = (url: string): Promise<HTMLImageElement> => {
     return new Promise((resolve, reject) => {
@@ -60,6 +79,8 @@ const fileUpload = async (event: Event) => {
         if (side.value === 'side') image.sideImg = await loadImage(img)
     }
 }
+
+const handleChangeSizeBag = (size: 'large' | 'small' | 'tiny') => sizeBag.value = size
 
 onMounted(() => {
     setDefaultImg();
