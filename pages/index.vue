@@ -32,7 +32,7 @@ const sizeBagArr = [
         value: 'tiny'
     },
 ];
-const sizeBag = ref<'large' | 'small' | 'tiny'>('small');
+const sizeBag = ref<'large' | 'small' | 'tiny'>('large');
 const inputFile = ref<HTMLInputElement | null>(null);
 const loadImage = (url: string): Promise<HTMLImageElement> => {
     return new Promise((resolve, reject) => {
