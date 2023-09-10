@@ -148,7 +148,7 @@ const getPositionOfImg = (img: HTMLImageElement, side: 'front' | 'side'): {
     img.width > sizeWidth ? width = sizeWidth : width = img.width;
     const ratio = img.width / img.height;
     height = width * 1 / ratio;
-    if (side = "front") img.height > sizeHeight ? height = sizeHeight : height = img.height;
+    if (side === "front") img.height > sizeHeight ? height = sizeHeight : height = img.height;
     return {
         x: (sizeWidth - width) / 2 + (side === "front" ? 129.902 : 24.9748),
         y: (sizeHeight - height) / 2 + (side === "front" ? 135.548 : 138.5),
