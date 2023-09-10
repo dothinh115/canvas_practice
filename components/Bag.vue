@@ -192,7 +192,7 @@ onMounted(() => {
         if (isInFrontPath) { emit("changeSide", "front"); }
         if (isInSidePath) emit("changeSide", "side");
     }
-    drawBag(ctx!);
+    if (ctx) drawBag(ctx);
 
 });
 </script>
