@@ -3,10 +3,12 @@
         <Bag :side="side" :image="image" @changeSide="changeSide" />
     </div>
     <input type="file" class="hidden" ref="inputFile" @change="fileUpload" />
-    <div class="mt-[100px] w-1/4 mx-auto grid grid-cols-4 gap-3">
-        <img src="/images/imgUpload.png" class="w-[92px] h-[92px] cursor-pointer object-cover" @click="uploadFile" />
-        <img :src="item" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover" @click="changeImg"
-            v-for="(item, index) in uploadedImg" :key="index" />
+    <div class="mt-[100px] max-w-[400px] lg:w-1/2 md:w-1/2 w-full mx-auto grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-1">
+        <img src="/images/imgUpload.png"
+            class="md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover mx-auto" @click="uploadFile" />
+        <img :src="item"
+            class="rounded-[12px] md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover  mx-auto"
+            @click="changeImg" v-for="(item, index) in uploadedImg" :key="index" />
     </div>
 </template>
 

@@ -1,5 +1,6 @@
 <template>
-    <canvas ref="canvasEl" width="471" height="540" class="mx-auto" @click="customBag">
+    <canvas ref="canvasEl" width="471" height="540" class="mx-auto md:w-[471px] md:h-[540px] w-full h-full"
+        @click="customBag">
         Trình duyệt ko support
     </canvas>
 </template>
