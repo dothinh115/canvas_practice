@@ -56,6 +56,10 @@ const getPositionOfImg = (img: HTMLImageElement, side: 'front' | 'side'): {
                 break;
             }
             case 'tiny': {
+                sizeWidth = 377.214 - 198.382;
+                sizeHeight = 456.673 - 198.186;
+                imgStartX = 198.382;
+                imgStartY = 198.186;
                 break;
             }
             default: {
@@ -77,6 +81,10 @@ const getPositionOfImg = (img: HTMLImageElement, side: 'front' | 'side'): {
                 break;
             }
             case 'tiny': {
+                sizeWidth = 178.218 - 95.3972;
+                sizeHeight = 442.505 - 195.505;
+                imgStartX = 95.3972;
+                imgStartY = 170.505;
                 break;
             }
             default: {
@@ -95,6 +103,12 @@ const getPositionOfImg = (img: HTMLImageElement, side: 'front' | 'side'): {
         if (ratio > 1.5)
             height = width * 1 / ratio;
         else height = sizeHeight
+    }
+    else {
+        if (props.sizeBag === 'tiny') {
+            width = sizeWidth;
+            height = sizeWidth;
+        }
     }
     return {
         x: (sizeWidth - width) / 2 + imgStartX,
@@ -215,6 +229,101 @@ const drawBag = async (ctx: CanvasRenderingContext2D) => {
             break;
         }
         case 'tiny': {
+            ctx.lineWidth = 1;
+            ctx.setLineDash([]);
+            const a = new Path2D("M265.609 135.371L386.909 171.476L188.372 189.988L84.9097 152.314L265.609 135.371Z");
+            ctx.fillStyle = "#969696";
+            ctx.fill(a);
+
+            const b = new Path2D("M386.933 171.477L188.372 189.988L84.9097 152.313L386.933 171.477Z");
+            ctx.fillStyle = "#6F6F6F";
+            ctx.fill(b);
+
+            const c = new Path2D("M265.076 135.367V181.675");
+            ctx.strokeStyle = "#464646";
+            ctx.stroke(c);
+
+            const d = new Path2D("M265.599 135.367L386.899 171.472L188.194 190.345L84.7319 152.671L265.599 135.367Z");
+            ctx.strokeStyle = "#464646";
+            ctx.lineJoin = 'round';
+            ctx.stroke(d);
+
+            const e = new Path2D("M136.237 106.912L153.137 105.192V191.842L136.237 193.481V106.912Z");
+            ctx.fillStyle = "#000";
+            ctx.fill(e);
+
+            const f = new Path2D("M136.237 106.911L226.915 97.5488L210.053 84.7675L153.028 89.3258L136.237 106.911Z");
+            ctx.fillStyle = "#000";
+            ctx.fill(f);
+
+            const g = new Path2D("M210.013 99.2259L226.913 97.5441V182.583L210.013 184.274L210.013 99.2259Z");
+            ctx.fillStyle = "#000";
+            ctx.fill(g);
+
+
+            const h = new Path2D("M84.5684 152.286L188.03 189.96V455.232L84.5684 417.558L84.5684 152.286Z");
+            ctx.fillStyle = "#E6E6E6";
+            ctx.strokeStyle = "#464646";
+            ctx.lineJoin = 'round';
+            ctx.fill(h);
+            ctx.stroke(h);
+
+
+            const i = new Path2D(sidePath.value); //side
+            ctx.fillStyle = "#D1D1D1";
+            ctx.strokeStyle = "#68341C";
+            ctx.lineJoin = 'round';
+            ctx.setLineDash([3, 3]);
+            ctx.fill(i);
+            ctx.stroke(i);
+            ctx.save();
+            ctx.clip(new Path2D(sidePath.value));
+            await drawImg(ctx);
+            ctx.restore();
+
+            const j = new Path2D("M244.158 127.704L261.058 125.983V184.378L244.158 186.017V127.704Z");
+            ctx.fillStyle = "#000";
+            ctx.fill(j);
+
+            const k = new Path2D("M244.158 127.703L334.836 118.341L317.974 105.559L260.949 110.118L244.158 127.703Z");
+            ctx.fillStyle = "#000";
+            ctx.fill(k);
+
+            const l = new Path2D("M317.934 120.018L334.834 118.336V176.689L317.934 178.38L317.934 120.018Z");
+            ctx.fillStyle = "#000";
+            ctx.fill(l);
+
+            const m = new Path2D("M188.03 189.949L386.565 171.477V426.109L188.03 455.233V189.949Z");
+            ctx.fillStyle = "#fff";
+            ctx.strokeStyle = "#464646";
+            ctx.lineJoin = 'round';
+            ctx.setLineDash([]);
+            ctx.fill(m);
+            ctx.stroke(m);
+
+            const n = new Path2D(frontPath.value); //front
+            ctx.fillStyle = "#fff";
+            ctx.strokeStyle = "#68341C";
+            ctx.lineJoin = 'round';
+            ctx.setLineDash([3, 3]);
+            ctx.fill(n);
+            ctx.stroke(n);
+            ctx.save();
+            ctx.clip(new Path2D(frontPath.value));
+            await drawImg(ctx);
+            ctx.restore();
+
+            const o = new Path2D("M87.7079 415.36V153.429L84.5684 152.286V417.558L188.03 455.232V189.96L184.891 188.817V450.748L87.7079 415.36ZM386.566 426.109L383.426 426.569L383.426 171.769L386.566 171.477V426.109ZM188.03 455.233L191.17 454.772L191.17 189.657L188.03 189.949V455.233Z");
+            ctx.fillStyle = "#000";
+            ctx.fill(o);
+
+            //side chosen
+            let stroke: Path2D = new Path2D(props.side === 'front' ? "M192.382 191.186V452.673L382.214 425V173.71Z" : "M88.3972 415.478L183.218 449.505V190.505L88.3972 155.505Z");
+            ctx.strokeStyle = "#13bac1";
+            ctx.lineWidth = 3;
+            ctx.setLineDash([]);
+            ctx.stroke(stroke);
+
             break;
         }
         default: {
@@ -297,7 +406,6 @@ const drawBag = async (ctx: CanvasRenderingContext2D) => {
             break;
         }
     }
-
 }
 
 watchEffect(() => {
@@ -309,6 +417,8 @@ watchEffect(() => {
             break;
         }
         case 'tiny': {
+            frontPath.value = "M198.382 198.186V446.673L377.214 419V179.71Z";
+            sidePath.value = "M95.3972 411.478L178.218 442.505V195.505L95.3972 165.505Z";
             break;
         }
         default: {
