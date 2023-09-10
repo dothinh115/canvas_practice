@@ -2,21 +2,31 @@
     <div class="mt-[100px]">
         <Bag :side="side" :image="image" @changeSide="changeSide" />
     </div>
+    <input type="file" class="hidden" ref="inputFile" @change="fileUpload" />
     <div class="mt-[100px] w-1/4 mx-auto grid grid-cols-4 gap-3">
-        <img src="/images/change_1.jpg" class="rounded-[12px] w-[122px] h-[92px] cursor-pointer" @click="changeImg" />
-        <img src="/images/change_2.jpg" class="rounded-[12px] w-[122px] h-[92px] cursor-pointer" @click="changeImg" />
-        <img src="/images/change_3.jpg" class="rounded-[12px] w-[122px] h-[92px] cursor-pointer" @click="changeImg" />
-        <img src="/images/change_4.jpg" class="rounded-[12px] w-[122px] h-[92px] cursor-pointer" @click="changeImg" />
+        <img src="/images/imgUpload.png" class="w-[92px] h-[92px] cursor-pointer object-cover" @click="uploadFile" />
+        <img :src="item" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover" @click="changeImg"
+            v-for="(item, index) in uploadedImg" :key="index" />
+        <img src="/images/change_1.jpg" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover"
+            @click="changeImg" />
+        <img src="/images/change_2.jpg" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover"
+            @click="changeImg" />
+        <img src="/images/change_3.jpg" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover"
+            @click="changeImg" />
+        <img src="/images/change_4.jpg" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover"
+            @click="changeImg" />
     </div>
 </template>
 
 <script setup lang="ts">
 const side = ref<'front' | 'side'>('front');
+const inputFile = ref<HTMLInputElement | null>(null);
 const loadImage = (url: string): Promise<HTMLImageElement> => {
     return new Promise((resolve, reject) => {
         let img = new Image();
         img.onload = () => resolve(img);
         img.onerror = (error) => reject(error);
+        img.style.objectFit = "cover";
         img.src = url;
     });
 }
@@ -26,7 +36,8 @@ const image = reactive<{
 }>({
     frontImg: null,
     sideImg: null
-})
+});
+const uploadedImg = ref<string[]>([]);
 const changeSide = (sideProps: 'front' | 'side') => side.value = sideProps;
 
 const setDefaultImg = async () => {
@@ -38,9 +49,22 @@ const changeImg = async (event: MouseEvent) => {
     const target = event.target as HTMLImageElement;
     if (side.value === 'front')
         image.frontImg = await loadImage(target.src)
-
     if (side.value === 'side') image.sideImg = await loadImage(target.src)
+}
 
+const uploadFile = () => inputFile.value?.click();
+const fileUpload = async (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    const file = target.files![0]
+    const fileReader: FileReader = new FileReader();
+    fileReader.readAsDataURL(file);
+    fileReader.onload = async () => {
+        const img = fileReader?.result as string;
+        uploadedImg.value = [...uploadedImg.value, img];
+        if (side.value === 'front')
+            image.frontImg = await loadImage(img)
+        if (side.value === 'side') image.sideImg = await loadImage(img)
+    }
 }
 
 onMounted(() => {

@@ -162,7 +162,7 @@ const drawImg = async (ctx: CanvasRenderingContext2D) => {
     ctx.drawImage(props.image.frontImg, frontImgPos.x, frontImgPos.y, frontImgPos.width, frontImgPos.height)
 
     const sideImgPos = getPositionOfImg(props.image.sideImg, 'side');
-    ctx.transform(1, 0.5, 0, 1, 0, -55);
+    ctx.transform(1, 0.44, 0, 1, 0, -48);
     ctx.drawImage(props.image.sideImg, sideImgPos.x, sideImgPos.y, sideImgPos.width, sideImgPos.height);
 }
 
