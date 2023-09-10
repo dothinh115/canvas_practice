@@ -59,6 +59,8 @@ const fileUpload = async (event: Event) => {
     }
 }
 
-setDefaultImg();
+onMounted(() => {
+    setDefaultImg();
+});
 
 </script>
