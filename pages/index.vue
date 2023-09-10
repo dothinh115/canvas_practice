@@ -9,9 +9,11 @@
     <input type="file" class="hidden" ref="inputFile" @change="fileUpload" />
     <div class="mt-[100px] max-w-[400px] lg:w-1/2 md:w-1/2 w-full mx-auto grid md:grid-cols-4 grid-cols-2 md:gap-3 gap-1">
         <img src="/images/imgUpload.png"
-            class="md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover mx-auto" @click="uploadFile" />
+            class="md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover mx-auto border-[3px] border-transparent"
+            @click="uploadFile" />
         <img :src="item"
-            class="rounded-[12px] md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover mx-auto" :class="{
+            class="rounded-[12px] md:w-[92px] md:h-[92px] w-[150px] h-[150px] cursor-pointer object-cover mx-auto border-[3px] border-transparent"
+            :class="{
                 'active': side === 'front' ? image.frontImg?.src.includes(item) : image.sideImg?.src.includes(item)
             }" @click="changeImg" v-for="(item, index) in uploadedImg" :key="index" />
     </div>
