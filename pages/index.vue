@@ -7,14 +7,6 @@
         <img src="/images/imgUpload.png" class="w-[92px] h-[92px] cursor-pointer object-cover" @click="uploadFile" />
         <img :src="item" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover" @click="changeImg"
             v-for="(item, index) in uploadedImg" :key="index" />
-        <img src="/images/change_1.jpg" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover"
-            @click="changeImg" />
-        <img src="/images/change_2.jpg" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover"
-            @click="changeImg" />
-        <img src="/images/change_3.jpg" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover"
-            @click="changeImg" />
-        <img src="/images/change_4.jpg" class="rounded-[12px] w-[92px] h-[92px] cursor-pointer object-cover"
-            @click="changeImg" />
     </div>
 </template>
 
@@ -37,7 +29,7 @@ const image = reactive<{
     frontImg: null,
     sideImg: null
 });
-const uploadedImg = ref<string[]>([]);
+const uploadedImg = ref<string[]>(["/images/change_1.jpg", "/images/change_2.jpg", "/images/change_3.jpg", "/images/change_4.jpg"]);
 const changeSide = (sideProps: 'front' | 'side') => side.value = sideProps;
 
 const setDefaultImg = async () => {
@@ -60,7 +52,7 @@ const fileUpload = async (event: Event) => {
     fileReader.readAsDataURL(file);
     fileReader.onload = async () => {
         const img = fileReader?.result as string;
-        uploadedImg.value = [...uploadedImg.value, img];
+        uploadedImg.value = [img, ...uploadedImg.value,];
         if (side.value === 'front')
             image.frontImg = await loadImage(img)
         if (side.value === 'side') image.sideImg = await loadImage(img)
