@@ -41,7 +41,3 @@
     </div>
   </div>
 </template>
-<script setup>
-const { getProfile } = useAuth();
-await getProfile();
-</script>
