@@ -73,6 +73,7 @@ const image = reactive<{
   frontImg: null,
   sideImg: null,
 });
+
 const uploadedImg = ref<string[]>([
   "/images/change_1.jpg",
   "/images/change_2.jpg",
