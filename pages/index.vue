@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-const side = ref<"front" | "side" | null>(null);
+const side = ref<"front" | "side" | null>("front");
 const sizeBagArr = [
   {
     title: "Large(17x15x7 inches)",
