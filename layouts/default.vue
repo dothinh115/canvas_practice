@@ -1,10 +1,12 @@
 <template>
-  <div class="bg-slate-900 w-screen h-screen">
+  <div
+    class="bg-slate-900 w-screen h-screen max-w-screen max-h-screen overflow-hidden"
+  >
     <div class="px-6 pt-4">
       <div class="p-2 rounded-[12px] bg-white">
         <ul class="h-[40px] space-x-4 flex">
           <li
-            class="w-[100px] flex items-center justify-center h-full bg-slate-200 rounded-[20px]"
+            class="w-[100px] flex items-center justify-center h-full bg-slate-200 rounded-[12px]"
           >
             <NuxtLink
               :to="'/'"
@@ -13,7 +15,7 @@
             >
           </li>
           <li
-            class="w-[100px] flex items-center justify-center h-full bg-slate-200 rounded-[20px]"
+            class="w-[100px] flex items-center justify-center h-full bg-slate-200 rounded-[12px]"
           >
             <NuxtLink
               :to="'/login'"
@@ -22,7 +24,7 @@
             >
           </li>
           <li
-            class="w-[100px] flex items-center justify-center h-full bg-slate-200 rounded-[20px]"
+            class="w-[100px] flex items-center justify-center h-full bg-slate-200 rounded-[12px]"
           >
             <NuxtLink
               :to="'/dashboard'"
