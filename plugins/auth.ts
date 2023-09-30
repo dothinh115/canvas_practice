@@ -1,4 +1,8 @@
-export default defineNuxtPlugin(async () => {
-  const { getProfile } = useAuth();
-  await getProfile();
+export default defineNuxtPlugin({
+  name: "get-profile",
+  enforce: "pre",
+  async setup() {
+    const { getProfile } = useAuth();
+    await getProfile();
+  },
 });
