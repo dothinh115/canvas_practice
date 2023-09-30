@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <div class="flex justify-center items-center w-full h-full">
     <div class="p-4 rounded-[12px] bg-white w-[350px]">
       <form class="space-y-3" @submit.prevent="handleSubmitLogin">
         <h1 class="text-[32px]">Đăng nhập</h1>
@@ -22,7 +22,7 @@
         </div>
       </form>
     </div>
-  </main>
+  </div>
 </template>
 <script setup lang="ts">
 const { login } = useAuth();
